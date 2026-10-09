@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>طلایار — قیمت‌گذاری خودکار طلا، سکه و نقره در ووکامرس</title>
+<meta name="description" content="دموی افزونهٔ طلایار: موتور قیمت‌گذاری پویای طلا و جواهر برای ووکامرس — فرمول کامل صنفی، محصول متغیر، سکه و حباب، نرخ خرید از مشتری، حفاظت نرخ کهنه و هم‌افزایی مودیان‌یار. بدون کارمزد ماهانه.">
+<style>
+@font-face { font-family:'Vazirmatn'; src:url('fonts/Vazirmatn-Regular.woff2') format('woff2'); font-weight:400; }
+@font-face { font-family:'Vazirmatn'; src:url('fonts/Vazirmatn-Medium.woff2') format('woff2'); font-weight:500; }
+@font-face { font-family:'Vazirmatn'; src:url('fonts/Vazirmatn-SemiBold.woff2') format('woff2'); font-weight:600; }
+@font-face { font-family:'Vazirmatn'; src:url('fonts/Vazirmatn-Bold.woff2') format('woff2'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Vazirmatn', Tahoma, sans-serif; background:#171005; color:#fff; overflow-x:hidden; }
+.topbar { height:6px; background:linear-gradient(90deg,#ffe3a8,#e8b64c 34%,#b8862d 58%,#7ef2b6); }
+.wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
+
+/* HERO */
+.hero { position:relative; padding:72px 0 60px;
+  background:
+    radial-gradient(ellipse 900px 620px at 85% 110%, rgba(232,182,76,.22), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 8% -10%, rgba(255,214,138,.12), transparent 55%),
+    linear-gradient(122deg,#171005 0%,#241a08 40%,#3a2d0e 75%,#54420f 100%); }
+.hero-inner { display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+.logo { width:88px; height:88px; border-radius:24px; flex-shrink:0;
+  background:linear-gradient(135deg,#ffd97a,#b8862d);
+  box-shadow:0 14px 44px rgba(184,134,45,.55), inset 0 2px 0 rgba(255,255,255,.28);
+  display:flex; align-items:center; justify-content:center; font-size:48px; font-weight:700; color:#3a2a08; }
+.hero h1 { font-size:44px; font-weight:700; letter-spacing:-.5px; }
+.hero h1 span { background:linear-gradient(90deg,#ffe9b8,#e8b64c); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.vchip { display:inline-block; background:rgba(255,214,138,.14); color:#ffd98a; border:1.5px solid rgba(255,214,138,.45);
+  border-radius:999px; padding:5px 16px; font-size:15px; font-weight:600; margin-inline-start:14px; vertical-align:middle; }
+.hero p { margin-top:14px; font-size:19px; line-height:1.9; color:rgba(255,255,255,.92); max-width:680px; }
+.hero p b { color:#ffe7bd; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-top:34px; }
+.stat { background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.18); border-radius:16px; padding:16px 18px; }
+.stat .n { font-size:26px; font-weight:700; color:#ffd98a; }
+.stat .t { font-size:14px; color:rgba(255,255,255,.75); margin-top:4px; font-weight:500; }
+
+/* CTA */
+.cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
+.btn { display:inline-flex; align-items:center; gap:8px; border-radius:14px; padding:14px 30px;
+  font-size:17px; font-weight:700; text-decoration:none; cursor:pointer; border:none; font-family:inherit; }
+.btn-buy { background:linear-gradient(135deg,#ffd97a,#b8862d); color:#241a08; box-shadow:0 12px 34px rgba(184,134,45,.5); }
+.btn-buy:hover { filter:brightness(1.1); }
+.btn-ghost { background:rgba(255,255,255,.08); color:#f7f0dd; border:1.5px solid rgba(255,255,255,.38); }
+.btn-ghost:hover { background:rgba(255,255,255,.16); }
+
+/* SECTIONS */
+section { padding:64px 0; }
+.sec-title { font-size:30px; font-weight:700; margin-bottom:8px; }
+.sec-title b { color:#ffd97a; }
+.sec-sub { color:rgba(255,255,255,.7); font-size:16.5px; font-weight:500; margin-bottom:36px; line-height:1.9; }
+.dark { background:#0d0a04; }
+
+/* نرخ زنده */
+.rates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+.rate-card { background:rgba(255,255,255,.06); border:1.5px solid rgba(255,214,138,.22); border-radius:18px; padding:20px 22px; }
+.rate-card .rn { font-size:22px; font-weight:700; color:#fff; font-variant-numeric:tabular-nums; }
+.rate-card .rt { font-size:14px; color:rgba(255,255,255,.7); margin-top:4px; font-weight:500; }
+.rate-card .rb { font-size:13px; color:#a8f0d8; margin-top:8px; font-weight:600; }
+.rate-note { margin-top:20px; font-size:13.5px; color:rgba(255,255,255,.55); }
+
+/* ماشین‌حساب */
+.calc { max-width:460px; margin:0 auto; background:#fff; color:#1d2327; border-radius:20px; padding:28px 30px;
+  box-shadow:0 40px 90px rgba(0,0,0,.5); }
+.calc h3 { color:#8a6a1f; font-size:21px; margin-bottom:18px; text-align:center; }
+.calc .row { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:10px 0; }
+.calc label { font-size:14.5px; font-weight:600; }
+.calc input, .calc select { width:170px; padding:8px 12px; border:1.5px solid #e5d9b8; border-radius:10px;
+  font-family:inherit; font-size:15px; background:#fdfaf2; color:#1d2327; }
+.calc input:focus, .calc select:focus { outline:2px solid #e8b64c; outline-offset:1px; }
+.calc .res { margin-top:18px; background:#fdf3dc; border-radius:12px; padding:16px 18px; }
+.calc .res .rp { font-size:24px; font-weight:700; color:#8a6a1f; }
+.calc .res .br { margin-top:8px; font-size:12.5px; color:#5b6470; line-height:1.9; }
+.calc .note { margin-top:12px; font-size:11.5px; color:#8a8a93; text-align:center; line-height:1.8; }
+
+/* گالری */
+.shot-hero { border-radius:18px; overflow:hidden; box-shadow:0 40px 90px rgba(0,0,0,.5), 0 0 0 1.5px rgba(255,255,255,.16); margin-bottom:22px; }
+.shot-hero img { width:100%; display:block; }
+.shot-cap { background:rgba(18,13,4,.94); border:1.5px solid rgba(255,255,255,.16); border-top:none;
+  border-radius:0 0 18px 18px; padding:14px 20px; font-size:15.5px; font-weight:600; color:#ffefd0; }
+.gal { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:20px; }
+.gal .g { border-radius:16px; overflow:hidden; box-shadow:0 22px 55px rgba(0,0,0,.45), 0 0 0 1.5px rgba(255,255,255,.12); }
+.gal .g img { width:100%; display:block; }
+.gal .g .cap { background:rgba(18,13,4,.94); border-top:1.5px solid rgba(255,255,255,.12); padding:11px 16px;
+  font-size:14px; font-weight:600; color:#f5e9cc; }
+
+/* امکانات */
+.feats { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px; }
+.feat { background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.14); border-radius:18px; padding:22px 24px; }
+.feat .fi { width:46px; height:46px; border-radius:13px; background:linear-gradient(135deg,#ffd97a,#b8862d);
+  display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:14px; }
+.feat h3 { font-size:19px; font-weight:700; margin-bottom:8px; }
+.feat p { font-size:14.5px; color:rgba(255,255,255,.75); line-height:1.95; }
+.feat p b { color:#ffe7bd; }
+
+/* هم‌افزایی */
+.bundle { background:linear-gradient(122deg,#0a1f19,#14503f); border-radius:22px; padding:34px 36px;
+  display:flex; gap:28px; align-items:center; flex-wrap:wrap; border:1.5px solid rgba(126,242,182,.3); }
+.bundle .bi { width:64px; height:64px; border-radius:18px; background:linear-gradient(135deg,#3fbf98,#17604e);
+  display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:700; }
+.bundle h3 { font-size:23px; font-weight:700; color:#7ef2b6; margin-bottom:8px; }
+.bundle p { font-size:15.5px; color:rgba(255,255,255,.85); line-height:1.95; max-width:640px; }
+
+/* اینفوگرافیک */
+.info-shot { border-radius:18px; overflow:hidden; box-shadow:0 40px 90px rgba(0,0,0,.5), 0 0 0 1.5px rgba(255,255,255,.16); }
+.info-shot img { width:100%; display:block; }
+
+/* فوتر */
+footer { background:#0d0a04; padding:34px 0; border-top:1.5px solid rgba(255,255,255,.1); }
+footer .foot { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  color:rgba(255,255,255,.6); font-size:14px; }
+footer .foot b { color:#ffd98a; }
+
+@media (max-width:780px) {
+  .hero h1 { font-size:32px; }
+  .hero p { font-size:16.5px; }
+  .calc { padding:20px 18px; }
+  .calc .row { flex-direction:column; align-items:stretch; }
+  .calc input, .calc select { width:100%; }
+  .bundle { padding:24px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="logo">ط</div>
+      <div>
+        <h1>طلایار<span class="vchip">نسخهٔ ۱.۰</span></h1>
+        <p>قیمت‌گذاری <b>خودکار و لحظه‌ای</b> طلا، جواهر، سکه و نقره در ووکامرس —
+        با <b>فرمول کامل صنفی</b> (وزن × عیار + اجرت + سود + مالیات)، پشتیبانی <b>محصول متغیر</b>،
+        سکه با کارمزد دلخواه و نرخ خرید از مشتری. <b>بدون کارمزد ماهانه.</b></p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">۳۰</div><div class="t">آزمون خودآزمون مرجع</div></div>
+      <div class="stat"><div class="n">۴</div><div class="t">عیار طلا + خلوص نقره</div></div>
+      <div class="stat"><div class="n">۴</div><div class="t">نوع سکه + نمایش حباب</div></div>
+      <div class="stat"><div class="n">۰</div><div class="t">کارمزد ماهانهٔ وب‌سرویس</div></div>
+    </div>
+    <div class="cta">
+      <a class="btn btn-buy" href="#gallery">مشاهدهٔ تصاویر محیط افزونه</a>
+      <a class="btn btn-ghost" href="#calc">ماشین‌حساب زندهٔ طلا</a>
+    </div>
+  </div>
+</header>
+
+<!-- نرخ‌های زنده -->
+<section id="rates">
+  <div class="wrap">
+    <div class="sec-title">نرخ‌های <b>لحظه‌ای</b> که طلایار می‌بیند</div>
+    <div class="sec-sub">افزونه نرخ‌ها را از TGJU (یا منبع دلخواه شما، یا دستی) واکشی می‌کند؛ این‌جا نمونهٔ نمایشی است.</div>
+    <div class="rates-grid">
+      <div class="rate-card"><div class="rn">۶,۵۰۰,۰۰۰ تومان</div><div class="rt">طلای ۱۸ عیار — هر گرم</div><div class="rb">✓ ۱۲ دقیقه پیش به‌روز</div></div>
+      <div class="rate-card"><div class="rn">۸,۶۶۶,۶۶۷ تومان</div><div class="rt">طلای ۲۴ عیار — هر گرم</div><div class="rb">تبدیل خودکار از مرجع ۱۸</div></div>
+      <div class="rate-card"><div class="rn">۲۱۸,۰۰۰,۰۰۰ تومان</div><div class="rt">سکهٔ امامی</div><div class="rb">حباب: ۱۵۴,۶۳۳,۰۰۰ تومان</div></div>
+      <div class="rate-card"><div class="rn">۹۰,۰۰۰ تومان</div><div class="rt">نقرهٔ خالص ۹۹۹ — هر گرم</div><div class="rb">خلوص ۹۲۵/۹۹۹ پشتیبانی می‌شود</div></div>
+    </div>
+    <p class="rate-note">نرخ‌های این صفحه نمایشی‌اند و مقدار لحظه‌ای بازار نیستند.</p>
+  </div>
+</section>
+
+<!-- ماشین‌حساب -->
+<section id="calc" class="dark">
+  <div class="wrap">
+    <div class="sec-title">ماشین‌حساب <b>زندهٔ طلا</b></div>
+    <div class="sec-sub">همین محاسبه در شورت‌کد [talayar_calculator] برای مشتریان شما نمایش داده می‌شود — با همان نرخ و همان فرمول افزونه.</div>
+    <div class="calc">
+      <h3>قیمت این زیورآلات چقدر است؟</h3>
+      <div class="row"><label>عیار</label>
+        <select id="c-karat"><option value="18">۱۸</option><option value="21">۲۱</option><option value="22">۲۲</option><option value="24">۲۴</option></select></div>
+      <div class="row"><label>وزن (گرم)</label><input id="c-weight" type="number" step="0.01" min="0" value="5.2"></div>
+      <div class="row"><label>اجرت (٪)</label><input id="c-ojrat" type="number" step="0.1" min="0" value="7"></div>
+      <div class="row"><label>سود (٪)</label><input id="c-sood" type="number" step="0.1" min="0" value="7"></div>
+      <div class="row"><label>مالیات (٪)</label><input id="c-maliat" type="number" step="1" min="0" value="9"></div>
+      <div class="res">
+        <div class="rp" id="c-price">—</div>
+        <div class="br" id="c-break">—</div>
+      </div>
+      <p class="note">محاسبه با نرخ نمایشی این صفحه و فرمول صنفی (قاعدهٔ مالیات فقط بر اجرت و سود).<br>
+      در افزونه، نرخ واقعی لحظه‌ای اعمال می‌شود و همهٔ پارامترها قابل تنظیم‌اند.</p>
+    </div>
+  </div>
+</section>
+
+<!-- گالری -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-title">محیط <b>افزونه</b> — واقعی، فارسی، RTL</div>
+    <div class="sec-sub">این تصاویر از رابط واقعی طلایار در پیشخوان وردپرس گرفته شده‌اند.</div>
+    <div class="shot-hero">
+      <img src="shots/talayar-dashboard.png" alt="پیشخوان طلایار">
+      <div class="shot-cap">پیشخوان طلایار — نرخ‌های جاری با حباب سکه، سن نرخ و میانبرها</div>
+    </div>
+    <div class="gal">
+      <div class="g"><img src="shots/talayar-product.png" alt="متاباکس محصول و واریاسیون‌ها"><div class="cap">فرمول محصول + جدول واریاسیون‌ها (وزن هر سایز)</div></div>
+      <div class="g"><img src="shots/talayar-rates.png" alt="نرخ‌ها"><div class="cap">ورود دستی نرخ‌ها + آخرین نرخ سالم</div></div>
+      <div class="g"><img src="shots/talayar-settings.png" alt="تنظیمات"><div class="cap">تنظیمات — منبع نرخ، فرمول پیش‌فرض و حفاظت‌ها</div></div>
+      <div class="g"><img src="shots/talayar-selftest.png" alt="خودآزمون"><div class="cap">خودآزمون ۳۰ آزمونی — همهٔ محاسبات مرجع</div></div>
+      <div class="g"><img src="shots/talayar-log.png" alt="گزارش‌ها"><div class="cap">گزارش کامل اعمال قیمت‌ها</div></div>
+      <div class="g"><img src="shots/talayar-calculator.png" alt="ماشین‌حساب"><div class="cap">ماشین‌حساب فروشگاه برای مشتریان</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- امکانات -->
+<section class="dark">
+  <div class="wrap">
+    <div class="sec-title">چرا <b>طلایار</b>؟</div>
+    <div class="sec-sub">هر چیزی که یک فروشگاه طلا برای قیمت‌گذاری درست لازم دارد.</div>
+    <div class="feats">
+      <div class="feat"><div class="fi">⚖️</div><h3>محصول متغیر با وزن هر سایز</h3><p>انگشتری سایز ۱۷ وزن دیگری نسبت به ۱۹ دارد. هر واریاسیون <b>وزن، اجرت، سود و اجزای خودش</b> را دارد — چیزی که در افزونه‌های مشابه وجود ندارد.</p></div>
+      <div class="feat"><div class="fi">🪙</div><h3>سکه با کارمزد دلخواه</h3><p>امامی، بهار آزادی، نیم و ربع — با نرخ مستقل، <b>حباب محاسبه‌شده</b> و کارمزد دلخواه درصدی/ثابت. خرید و فروش سکه هر دو.</p></div>
+      <div class="feat"><div class="fi">🛡️</div><h3>حفاظت نرخ کهنه و پرش</h3><p>اگر منبع نرخ خراب شود یا نرخ جهش مشکوک داشته باشد، <b>ذخیره متوقف و به شما اطلاع داده می‌شود</b>. سه سیاست برای نرخ کهنه: ادامه با نرخ سالم، «تماس بگیرید»، یا توقف.</p></div>
+      <div class="feat"><div class="fi">🔄</div><h3>نرخ خرید از مشتری</h3><p>طلافروش فقط نمی‌فروشد؛ می‌خرد هم. طلایار <b>قیمت خرید</b> را با ضریب دلخواه (مثلاً ۹۷٪) محاسبه و روی صفحهٔ محصول یا با شورت‌کد نمایش می‌دهد.</p></div>
+      <div class="feat"><div class="fi">🧮</div><h3>فرمول شفاف صنفی</h3><p>(وزن × عیار) + اجرت (٪/ثابت/هر گرم با کف) + سود (٪/ثابت روی طلا یا طلا+اجرت) + مالیات (قاعدهٔ طلا: <b>فقط اجرت و سود</b>) + اجزای سنگ و چرم. همهٔ پارامترها در سطح محصول بازنویسی می‌شوند.</p></div>
+      <div class="feat"><div class="fi">🧪</div><h3>خودآزمون ۳۰ آزمونی</h3><p>مثل مودیان‌یار: ۳۰ آزمون مرجع روی خودِ افزونه اجرا می‌شود تا سلامت محاسبات همیشه قابل بررسی باشد — <b>بدون اجرای سکوت‌آلود</b>.</p></div>
+      <div class="feat"><div class="fi">📊</div><h3>گزارش کامل اعمال</h3><p>هر تغییری که روی کدام محصول، از چه قیمتی به چه قیمتی و با کدام نرخ انجام شد — با صفحه‌بندی و فیلتر نوع رخداد.</p></div>
+      <div class="feat"><div class="fi">🔓</div><h3>بدون قفل و کارمزد</h3><p>منبع پیش‌فرض <b>رایگان و بدون کلید</b> است (TGJU). منبع سفارشی JSON یا حالت دستی هم دارید. لایسنس مادام‌العمر با به‌روزرسانی — بدون اشتراک ماهانه.</p></div>
+      <div class="feat"><div class="fi">🧾</div><h3>هم‌افزایی مودیان‌یار</h3><p>اگر مودیان‌یار (افزونهٔ صورتحساب الکترونیکی) نصب باشد، نرخ مالیات مؤثر هر قلم طلا <b>خودکار مطابق قاعدهٔ صنف</b> در صورتحساب تنظیم می‌شود.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- اینفوگرافیک -->
+<section>
+  <div class="wrap">
+    <div class="sec-title">گردش کار در <b>چهار گام</b></div>
+    <div class="sec-sub">واکشی، فرمول، اعمال و حفاظت — همه خودکار.</div>
+    <div class="info-shot"><img src="assets/infographic.png" alt="اینفوگرافیک گردش کار طلایار"></div>
+  </div>
+</section>
+
+<!-- بستهٔ کامل -->
+<section class="dark">
+  <div class="wrap">
+    <div class="bundle">
+      <div class="bi">م</div>
+      <div>
+        <h3>زنجیرهٔ کامل طلافروشی: طلایار + مودیان‌یار</h3>
+        <p>قیمت‌گذاری لحظه‌ای با طلایار و صدور صورتحساب الکترونیکی مودیان با مودیان‌یار —
+        دو افزونهٔ یک خانواده («-یار») که با هم یکپارچه کار می‌کنند: نرخ مالیات قلم‌های طلا
+        مطابق قاعدهٔ صنف (فقط اجرت و سود) خودکار در صورتحساب تنظیم می‌شود.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA نهایی -->
+<section>
+  <div class="wrap" style="text-align:center;">
+    <div class="sec-title">فروشگاه طلا شما، <b>همیشه به‌روز</b></div>
+    <div class="sec-sub" style="max-width:640px;margin-inline:auto;">دیگر نگران نوسان نرخ نباشید — طلایار قیمت‌ها را با فرمول درست، خودکار اعمال می‌کند.</div>
+    <a class="btn btn-buy" href="https://www.rtl-theme.com" target="_blank" rel="noopener">دریافت از rtl-theme</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>افزونهٔ <b>طلایار</b> — موتور قیمت‌گذاری طلا و جواهر ووکامرس</div>
+      <div>نسخهٔ ۱.۰.۰ · سازگار با وردپرس ۷.۱ و ووکامرس ۱۱.۲</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // همان فرمول افزونه (talayar-formula) با نرخ نمایشی این صفحه
+  var GOLD18 = 65000000;   // ریال
+  var STEP = 10000;
+  function phpRound(x){ return Math.round(x); }
+  function roundStep(a){ a = Math.round(a); return Math.floor((a + STEP/2) / STEP) * STEP; }
+  function toman(rials){ return Math.round(rials/10).toLocaleString('fa-IR'); }
+  function calc(){
+    var karat = parseInt(document.getElementById('c-karat').value, 10) || 18;
+    var w = parseFloat(document.getElementById('c-weight').value) || 0;
+    var o = parseFloat(document.getElementById('c-ojrat').value) || 0;
+    var s = parseFloat(document.getElementById('c-sood').value) || 0;
+    var m = parseFloat(document.getElementById('c-maliat').value) || 0;
+    var karatRate = phpRound(GOLD18 * karat / 18);
+    var base = phpRound(w * karatRate);
+    var ojrat = phpRound(base * o / 100);
+    var sood = phpRound(base * s / 100);
+    var maliat = phpRound((ojrat + sood) * m / 100);
+    var price = roundStep(base + ojrat + sood + maliat);
+    document.getElementById('c-price').textContent = toman(price) + ' تومان';
+    document.getElementById('c-break').textContent = 'طلا: ' + toman(base) + ' · اجرت: ' + toman(ojrat) +
+      ' · سود: ' + toman(sood) + ' · مالیات: ' + toman(maliat) + ' تومان';
+  }
+  ['c-karat','c-weight','c-ojrat','c-sood','c-maliat'].forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+  calc();
+})();
+</script>
+</body>
+</html>
